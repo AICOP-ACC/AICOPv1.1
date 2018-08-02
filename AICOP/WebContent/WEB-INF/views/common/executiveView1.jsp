@@ -1,6 +1,5 @@
- <script src="resources/js/custom/aicop_func.js"></script>
- <script src=https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.11.3/flowchart.js></script>
-
+ <script src="resources/js/package/aicop_func.js"></script>
+  <script src="resources/js/package/raphael-min.js"></script>
  <div class="main-container container-fluid">   
  
           <!-- top tiles -->
@@ -42,15 +41,15 @@
                 <div class="x_content" id="x_content2">
 				
     
-		 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>-->
+		  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script> -->
              <div><textarea id="code" style="width: 100%;display:none;" rows="11">
-st=>start: Start|past:>javascript:test()
-			 orderCapture=>operation: Order Capture:>javascript:test()
+st=>start: Start|past:>http://www.google.com
+			 orderCapture=>operation: Order Capture:>http://www.google.com
 sub1=>subroutine: My Subroutine
 orderValidation=>operation: Order Validation
 orderSubmission=>operation: Order Submission
 op3=>operation: provisioning
-PortingOrders=>operation: Porting Orders:>javascript:loadNewFlowChart()
+PortingOrders=>operation: Porting Orders
 NonPortingOrders=>operation: Non Porting Orders 
 provisioning=>operation: Provisioning 
 billing=>operation: Billing 
@@ -63,42 +62,7 @@ provcond(yes)->PortingOrders->provisioning->billing->orderComp
 provcond(no)->NonPortingOrders->provisioning->billing->orderComp
 
 
-</textarea>
-<textarea id="code1" style="width: 100%;display:none;" rows="11">
-PortINInitiatedinCRM=>operation: Port IN Initiated in CRM
-CRMisNotified=>operation: CRM is Notified
-IntimateNo.OfInventoryofAssignedCarrier=>operation: Intimate No.Of Inventory of Assigned Carrier
-ActivationSystemCompletestheActivation=>operation: Activation System Completes the Activation
-MiddlewarereceivetheRequest=>operation: Middleware receive the Request
-NotifytheRejectionMessagetoCRM=>operation: Notify the Rejection Message to CRM
-TriggertheCutoverNotification=>operation: Trigger the Cutover Notification
-InitiateActivation=>operation: Initiate Activation
-ReceivestheRequest=>operation: Receives the Request
-ReceivestheResponseforNotifyRequest=>operation: Receives the Response for Notify Request
-SendstheDisconnectRequest=>operation: Sends the Disconnect Request
-BroadcasttheActivationCompletion=>operation: Broadcast the Activation Completion
-NotifytheLosingCarrier=>operation: Notify the Losing Carrier
-DisconnectionrequesttoLosingCarrier=>operation: Disconnection request to Losing Carrier
-Losingcarrierisnotified=>operation: Losing carrier is notified
-ReceivestheResponseforDisconnectRequest=>operation: Receives the Response for Disconnect Request
-NotifiedtheRejectionMessagetoCRM=>operation: Notified the Rejection Message to CRM
-Confirmed?=>condition: Confirmed?
-DisconnectCompleted?=>condition: Disconnect Completed?
-e=>end: Into admin panel
-PortINInitiatedinCRM(right)->MiddlewarereceivetheRequest(right)->ReceivestheRequest(right)->NotifytheLosingCarrier->ReceivestheResponseforNotifyRequest->Confirmed?->ReceivestheResponseforDisconnectRequest->DisconnectCompleted?
-Confirmed?(yes)->TriggertheCutoverNotification->SendstheDisconnectRequest->DisconnectionrequesttoLosingCarrier->ReceivestheResponseforDisconnectRequest
-Confirmed?(no)->NotifytheRejectionMessagetoCRM->CRMisNotified
-DisconnectCompleted?(yes)->InitiateActivation->ActivationSystemCompletestheActivation->BroadcasttheActivationCompletion->Losingcarrierisnotified
-DisconnectCompleted?(no)->NotifiedtheRejectionMessagetoCRM->CRMisNotified
-
-
-
-</textarea>
-
-
-
-
-</div>
+</textarea></div>
         <div><button id="run" type="button" style="width: 100%;display:none;">Run</button></div>
        <!-- <div id="canvas" style="width: 100%;height:200px;overflow-x:scroll;overflow-y:scroll;"></div>-->
 	 <div class="container">

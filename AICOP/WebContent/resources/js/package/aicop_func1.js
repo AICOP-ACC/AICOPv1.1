@@ -16,9 +16,9 @@
 		  var div=document.getElementById("x_content2");
 		$("#basic-example").remove();
 		$("#createflowchart").remove();
-	//	//alert(div.innerHTML);
+	//	alert(div.innerHTML);
 		div.innerHTML=div.innerHTML+'<div id="canvas" style="width: 100%;height:200px;overflow-x:scroll;overflow-y:scroll;"></div>'+'<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" id="createflowchart">Create Flow Chart</button>';
-		////alert(div.innerHTML);
+		alert(div.innerHTML);
 	var btn = document.getElementById("run"),
                     cd = document.getElementById("code"),
                     chart;
@@ -84,13 +84,13 @@
                       }
                     });
                     $('[id^=sub1]').click(function(){
-                      //alert('info here');
+                      alert('info here');
                     });
 		 
 		 }
          function click(id)
          {
-        	 //alert('going to click');
+        	 alert('going to click');
         	
         	 
          }
@@ -138,14 +138,14 @@ document.getElementById("navtitle").style.backgroundColor='#2A3F54';
 		 var code=flowone+"=>operation: "+flowone+"\n"+flowtwo+"=>operation: "+flowtwo+"\n"+flowthree+"=>operation: "+flowthree+"\n"+flowfour+"=>operation: "+flowfour+"\n"+flowfive+"=>operation: "+flowfive;
 var code1=flowone+"(right)->"+flowtwo+"(right)->"+flowthree+"(right)->"+flowfour+"(right)->"+flowfive;
 var codefinal=code+"\n"+code1;
-/* //alert(codefinal); */
+/* alert(codefinal); */
 
 
 
                  var   chart = flowchart.parse(codefinal);
 				 var div=document.getElementById("canvas");
 				 div.innerHTML="";
-				/*  //alert(chart); */
+				/*  alert(chart); */
                     chart.drawSVG('canvas', {
                       // 'x': 30,
                       // 'y': 50,
@@ -186,7 +186,7 @@ var codefinal=code+"\n"+code1;
                       }
                     });
                     $('[id^=sub1]').click(function(){
-                     /*  //alert('info here'); */
+                     /*  alert('info here'); */
                     });
 
 		 
@@ -196,10 +196,10 @@ var codefinal=code+"\n"+code1;
 	 var xmlhttp=new XMLHttpRequest();
 	 var marquee1="";
 	 xmlhttp.onreadystatechange=function(){
-	 	//alert(xmlhttp.status+" "+xmlhttp.readyState)
+	 	alert(xmlhttp.status+" "+xmlhttp.readyState)
 	 	if(xmlhttp.status==200&&xmlhttp.readyState==4){
 	 		var a=xmlhttp.responseText;
-	 	//alert(a);
+	 	alert(a);
 	 	var a1=$.parseJSON(a);
 	 	 marquee1='<marquee scrollamount=2 onmouseout="this.start()" onmouseover="this.stop()"  behavior="scroll" direction="up" style="height:250px;">';
 	 	for(var i=0;i<a.length;i++)
@@ -209,7 +209,7 @@ var codefinal=code+"\n"+code1;
 		 marquee1='</marquee>'
 	 	}
 	 	}
-//alert(marquee1);
+alert(marquee1);
 	 xmlhttp.open("POST", "notification.do", true);
 	 xmlhttp.send();
 	 
@@ -245,85 +245,5 @@ tagInput.tagsinput({
   
   
   }
-  
-  function loadNewFlowChart()
-	 {
-	 var div=document.getElementById("x_content2");
-	  var div=document.getElementById("x_content2");
-	$("#basic-example").remove();
-	$("#createflowchart").remove();
-	$("#canvas").remove();
-//	//alert(div.innerHTML);
-	div.innerHTML=div.innerHTML+'<div id="canvas" style="width: 100%;height:200px;overflow-x:scroll;overflow-y:scroll;"></div>'+'<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" id="createflowchart">Create Flow Chart</button>';
-	//alert(div.innerHTML);
-var btn = document.getElementById("run"),
-          cd = document.getElementById("code1"),
-          chart;
-
-          var code = cd.value;
-          if (chart) {
-            chart.clean();
-          }
-          chart = flowchart.parse(code);
-          chart.drawSVG('canvas', {
-            // 'x': 30,
-            // 'y': 50,
-            'line-width': 1.5,
-            'maxWidth': 3,//ensures the flowcharts fits within a certian width
-            'line-length': 10,
-            'text-margin': 5,
-            'font-size': 8,
-            'font': 'normal',
-            'font-family': 'Helvetica',
-            'font-weight': 'normal',
-            'font-color': 'black',
-            'line-color': 'black',
-            'element-color': 'black',
-          
-            'yes-text': 'yes',
-            'no-text': 'no',
-            'arrow-end': 'block',
-            'scale': 1.5,
-            'symbols': {
-              'start': {
-                'font-color': 'red',
-                'element-color': 'green',
-                'fill': 'black'
-              },
-              'end':{
-                'class': 'end-element'
-               
-              },
-              'operation':{
-              	'font-color': 'white',
-              	'fill':'#62aa3b',
-              	'stroke':'red'
-              	
-              },
-              
-             'condition':
-          	   {
-          	   'font-color': 'white',
-             	'fill':'#62aa3b',
-             	'stroke':'red'
-          	   
-          	   }
-
-            },
-            'flowstate' : {
-             /*  'orderCapture' : { 'fill' : 'black', 'font-size' : 12},
-              'current' : {'fill' : 'black', 'font-color' : 'red', 'font-weight' : 'bold'},
-              'future' : { 'fill' : 'green'},
-              'request' : { 'fill' : 'blue'},
-              'invalid': {'fill' : 'green'},
-              'approved' : { 'fill' : 'green', 'font-size' : 12, 'yes-text' : 'APPROVED', 'no-text' : 'n/a' },
-              'rejected' : { 'fill' : 'green', 'font-size' : 12, 'yes-text' : 'n/a', 'no-text' : 'REJECTED' } */
-            }
-          });
-          $('[id^=sub1]').click(function(){
-            //alert('info here');
-          });
-	 
-	 }
 
   
