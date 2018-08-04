@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-${result}
+<iframe src="https://www.google.com">
+  <p>Your browser does not support iframes.</p>
+</iframe>
 </body>
 </html>

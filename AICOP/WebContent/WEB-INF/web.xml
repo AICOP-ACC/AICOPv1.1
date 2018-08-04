@@ -11,6 +11,7 @@
         based on the recommendations of the Application Developer's Guide.
     </description>
 <welcome-file-list>
+<!-- <welcome-file>/WEB-INF/views/common/home.jsp</welcome-file> -->
 <welcome-file>/WEB-INF/views/common/home.jsp</welcome-file>
 </welcome-file-list>
     <servlet>

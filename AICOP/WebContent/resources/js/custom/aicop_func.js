@@ -18,7 +18,7 @@
 		$("#createflowchart").remove();
 	//	//alert(div.innerHTML);
 		div.innerHTML=div.innerHTML+'<div id="canvas" style="width: 100%;height:200px;overflow-x:scroll;overflow-y:scroll;"></div>'+'<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" id="createflowchart">Create Flow Chart</button>';
-		////alert(div.innerHTML);
+		//alert(div.innerHTML);
 	var btn = document.getElementById("run"),
                     cd = document.getElementById("code"),
                     chart;
@@ -202,18 +202,20 @@ var codefinal=code+"\n"+code1;
 	 	//alert(a);
 	 	var a1=$.parseJSON(a);
 	 	 marquee1='<marquee scrollamount=2 onmouseout="this.start()" onmouseover="this.stop()"  behavior="scroll" direction="up" style="height:250px;">';
-	 	for(var i=0;i<a.length;i++)
+	 	for(var i=0;i<a1.length;i++)
 	 		{
-	 		marquee1=marquee1+a1[i]+"<br><br>";
+	 		marquee1=marquee1+a1[i]+ " ~ <b>action required</b>" + "<br><br>";
 	 		}
-		 marquee1='</marquee>'
+		 marquee1=marquee1+'</marquee>'
+		 //alert("marquee1 "+marquee1);
+		 document.getElementById("x_content1").innerHTML=marquee1 ;
 	 	}
 	 	}
-//alert(marquee1);
+
 	 xmlhttp.open("POST", "notification.do", true);
 	 xmlhttp.send();
 	 
-  document.getElementById("x_content1").innerHTML=marquee1;
+ 
 
   }
   
@@ -226,9 +228,112 @@ var codefinal=code+"\n"+code1;
   
   function replacesignal()
   {
-  document.getElementById("x_content1").innerHTML='<canvas id="mybarChart" width="633" height="316" style="width: 633px; height: 316px;margin-top:10%;"></canvas>';
-var f=document.getElementById("mybarChart");
-new Chart(f,{type:"bar",data:{labels:["BCC","Helix","Helix Mobile","Helix Mobile","OPOM","POPI"],datasets:[{label:"# of Incidents",backgroundColor:"#26B99A",data:[51,30,40,28,92,50]}]},options:{scales:{yAxes:[{ticks:{beginAtZero:!0}}]}}})
+	  document.getElementById("x_content1").innerHTML='<div id="chartContainer" style="height: 230px; max-width: 100%; margin: 0px auto;"></div>';
+	  /*var f=document.getElementById("mybarChart");
+	  var chart=new Chart(f,{type:"bar",data:{datasets:[{label:"# of Incidents",backgroundColor:"#26B99A",data:[51,30,40,28,92,50]},{label:"# of Incidents",backgroundColor:"red",data:[51,30,40,28,92,50]},{label:"# of Incidents",backgroundColor:"green",data:[51,30,40,28,92,50]}]},options:{ scales: {
+		    xAxes: [{ stacked: true }],
+		    yAxes: [{ stacked: true }]
+		  }}})
+
+	  
+	  var xmlhttp=new XMLHttpRequest();
+		 var marquee1="";
+		 xmlhttp.onreadystatechange=function(){
+		 	//alert(xmlhttp.status+" "+xmlhttp.readyState)
+		 	if(xmlhttp.status==200&&xmlhttp.readyState==4){
+		 		var a=xmlhttp.responseText;
+		 	//alert(a);
+		 	var a1=$.parseJSON(a);
+		 	for(var i=0;i<a1.length;i++)
+		 		{
+		 		var data=a1[i]+'';
+		 		var array = data.split(",");
+		 		chart.data.labels[i]=array[0];
+		 		chart.data.datasets[0].data[i] =array[1];
+		 		chart.update();
+		 		}
+		 
+		 	}
+		 	
+		 	}
+
+		 xmlhttp.open("POST", "bgraph.do", true);
+		 xmlhttp.send();*/
+	  
+	  //alert("loading options");
+	  var options = {
+				animationEnabled: true,
+				theme: "light2",
+				title:{
+					text: "Incident Variation Trend"
+				},
+				
+				axisY:{
+					title:"Number"
+				},
+
+				
+				legend:{
+					verticalAlign: "top",
+					horizontalAlign: "center"
+				},
+				 toolTip:{
+			        enabled: true   
+			      },
+				data: [
+				{     
+					type: "stackedColumn",
+					showInLegend: false,
+				
+					axisYType: "secondary",
+					color: "#6b9eef",
+					
+					dataPoints: [
+						{ y: 70, label: "BCC Stuck Order" },
+						{ y: 23, label: "OPOM Order submission failure" },
+						{ y: 17, label: "POPI Port out notification not received" },
+						{ y: 28, label: "Helix Unable to login" },
+						{ y: 30, label: "Helix Mobile Stuck Order" }
+						
+					]
+				},
+				{
+					type: "stackedColumn",
+				
+						
+					axisYType: "secondary",
+					color: "#9B59B6",
+					dataPoints: [
+						{ y: 48, label: "BCC Unable to create case" },
+						{  },
+						{  },
+						{  },
+						{ y: 41, label: "Helix Mobile Unable to Create HLR Case " }
+					]
+				},
+				{
+					type: "stackedColumn",
+				
+						
+					axisYType: "secondary",
+					color: "#F0D6A7",
+					dataPoints: [
+						{ y: 0, label: "BCC" },
+						{ y: 0, label: "OPOM" },
+						{ y: 0, label: "POPI" },
+						{ y: 0, label: "Helix" },
+						{ y: 0, label: "Helix Mobile" }
+					]
+				}
+				
+				]
+			};
+//alert("loading chart");
+			$("#chartContainer").CanvasJSChart(options);
+			
+  
+	  
+
   }
   
   function replaceBeat()
@@ -325,5 +430,101 @@ var btn = document.getElementById("run"),
           });
 	 
 	 }
+  
+  function loadOrder()
+  {
+	  
+	  
+	  var dataPoints = [];
+	  var datapointsbar=[];
+	  var bardata=[100,	90,	80,	100,	130,	120,	100,	30,	80,	80,	90,	110,	50,	80,	120,	100,	111,100,	70,	80,	80,	90,	100,	90,	80,	100,	130,	120,	100,	30,	80,	80,	90,	110,	50,	80,	120,	100,	111,	100,	70,	80,	80,	90,	100,	90,	80,	100,	130,	120,	100,	30,	80,	80,	90,	110,	50,	80,	120,	100,111];
+	  var linedata=[90,	81,	70,	90,	120,	111,	90,	20,	70,	71,	80,	100,	41,	70,	110,	90,	102,	170,	60,	70,	71,	80,	90,	81,	70,	90,	120,	111,	90,	20,	70,	71,	80,	100,	41,	70,	110,	90,	102,	170,	60,	70,	71,	80,	90,	81,	70,	90,	120,	111,	90,	20,	70,	71,	80,	100,	41,	70,	110,	90,	102];
+	  
+	 var x, y = 10;
+	 for( i = 0; i <=60; i++ ) {
+		 
+		 if(i%15==0)
+	     dataPoints.push({x: new Date(2018,07,06,10,i), y:linedata[i] });
+	 }
+	 for( i = 0; i <=60; i++ ) {
+	     datapointsbar.push({x: new Date(2018,07,06,10,i), y: bardata[i] });
+	 }
+	 var chart = new CanvasJS.Chart("chartContainer",
+	     {
+	       title:{
+	           text: ""
+	       },
+	 	  dataPointWidth: 6,
+	       axisX:{
+	         interval: 15,    // for every 10minutes
+	         intervalType: "minute",
+	         valueFormatString: "hh:mm tt"
+	       },
+	       data: [
+	       
+	 	  {
+	         type: "column",
+	 		color: "#6b9eef",
+	         dataPoints: datapointsbar
+	      },
+	 	 {
+	         type: "line",
+	 		color: "#914468",
+	         dataPoints: dataPoints
+	      }
+	 	 
+	      ]
+	 });
+	 chart.render();  
+	  
+	  
+	  
+  
+  }
+  
+  function loadBilling()
+  {
+	  
+	  var dataPoints = [];
+	  var datapointsbar=[];
+	  var bardata=[200,	190,	180,	200,	230,	220,	200,	130,	180,	180,	190,	210,	150,	180,	220,	200,	211,	280,	170,	180,	180,	190,	200,	190,	180,	200,	230,	220,	200,	130,	180,	180,	190,	210,	150,	180,	220,	200,	211,	280,	170,	180,	180,	190,	200,	190,	180,	200,	230,	220,	200,	130,	180,	180,	190,	210,	150,	180,	220,	200,	211];
+	  var linedata=[140,	131,	120,	140,	170,	161,	140,	70,	120,	121,	130,	150,	91,	120,	160,	140,	152,	220,	110,	120,	121,	130,	140,	131,	120,	140,	170,	161,	140,	70,	120,	121,	130,	150,	91,	120,	160,	140,	152,	220,	110,	120,	121,	130,	140,	131,	120,	140,	170,	161,	140,	70,	120,	121,	130,	150,	91,	120,	160,	140,	152];
+	  
+	 var x, y = 10;
+	 for( i = 0; i <=60; i++ ) {
+	     dataPoints.push({x: new Date(2018,07,06,10,i), y:linedata[i] });
+	 }
+	 for( i = 0; i <=60; i++ ) {
+	     datapointsbar.push({x: new Date(2018,07,06,10,i), y: bardata[i] });
+	 }
+	 var chart = new CanvasJS.Chart("chartContainer1",
+	     {
+	       title:{
+	           text: ""
+	       },
+	 	  dataPointWidth: 6,
+	       axisX:{
+	         interval: 15,    // for every 10minutes
+	         intervalType: "minute",
+	         valueFormatString: "hh:mm tt"
+	       },
+	       data: [
+	       
+	 	  {
+	         type: "column",
+	 		color: "#6b9eef",
+	         dataPoints: datapointsbar
+	      },
+	 	 {
+	         type: "line",
+	 		color: "#914468",
+	         dataPoints: dataPoints
+	      }
+	 	 
+	      ]
+	 });
+	 chart.render();
+	  
+  }
 
   

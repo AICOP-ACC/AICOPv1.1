@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	
+	$('#sampleCheck').load("https://www.google.com");
 $(".open-button").on("click", function() {
   $(this).closest('.collapse-group').find('.collapse').collapse('show');
 });
@@ -82,5 +84,12 @@ $(".addRow").on("click", function() {
 $(".saveRow").on("click", function() {
 	console.log("save Row");
 	});
+
+
+
+$("#popUpNotes").on("click",function(){
+	console.log("Btn clciked.....");
+	$('#popUpModal').modal('show').find('.modal-body').load($(this).attr('htpps://www.google.com'));
+})
 
 });

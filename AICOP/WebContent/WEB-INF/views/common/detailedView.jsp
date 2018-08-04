@@ -111,7 +111,7 @@
       <div class="panel-body">
       <div class="text-primary">Major Incident : 1801040252
       </div>
-		
+		<div id="sampleCheck"></div>
 		 
 		 <i id="confInit" class="fa fa-phone-square icon-green icon-large mouse-point icon-embossed"></i>
 		 <i id="confTerminate" class="fa fa-phone-square icon-red icon-large mouse-point icon-embossed"></i>
@@ -119,8 +119,11 @@
 		 
 		 
 		 <!-- <i id="notesIcon" class="fa fa-comment-o icon-blue icon-large icon-embossed mouse-point pull-right"></i> -->
-		 <button type="button" data-toggle="modal" class="pull-right" data-target=".notes-modal-sm"><i id="notesIcon" class="fa fa-comment-o icon-blue icon-large icon-embossed mouse-point pull-right"></i></button>
-		 <div class="modal fade notes-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+		 <!-- <button id="popUpNotes" type="button" data-toggle="modal" class="pull-right" data-target=".notes-modal-sm"> -->
+		 <button id="popUpNotes" type="button" data-toggle="modal" class="pull-right" data-target="">
+			 <i id="notesIcon" class="fa fa-comment-o icon-blue icon-large icon-embossed mouse-point pull-right"></i>
+		 </button>
+		 <div id="popUpModal" class="modal fade notes-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-sm">
                       <div class="modal-content">
 
@@ -134,9 +137,9 @@
                           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                           <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
                          -->
-                         <textarea rows="6" cols="200"></textarea>
+                         <!-- <textarea rows="6" cols="200"></textarea>
                          <div>&nbsp;</div>
-                         <textarea rows="2" cols="200"></textarea>
+                         <textarea rows="2" cols="200"></textarea> -->
                          
                          
                          </div>
