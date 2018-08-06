@@ -101,3 +101,21 @@ a:hover, a:visited, a:link, a:active {
 .aicop-padding-bottom-20{
 	padding-bottom:20px;
 }
+
+
+.x_title_custom {
+    /* border-bottom: 2px solid #395b88; */
+    background-color: #2a3f54;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px;
+}
+
+.x_title_custom h2 {
+    margin: 5px 0 6px;
+    float: left;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #ffffff;
+}
