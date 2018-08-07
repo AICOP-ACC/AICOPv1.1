@@ -12,10 +12,10 @@
            <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
+                <div class="x_title_custom">
                   <h2>Notifications</h2>
                   <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up" onclick="replaceBell()"></i></a>
+                    <li><a class="collapse-link"><i class="fa fa-bell-o" onclick="replaceBell()"></i></a>
 					  <li><a class="collapse-link1" onclick="replaceexclamation()"><i class="fa fa-exclamation-circle"></i></a>
                     </li>
                     <li><a class="collapse-link11" onclick="replacesignal()"><i class="fa fa-signal"></i></a>
@@ -36,7 +36,7 @@
 
             <div class="col-md-8 col-sm-8 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
+                <div class="x_title_custom">
                   <h2>Flowchart</h2>
                   
                   <div class="clearfix"></div>
@@ -169,14 +169,23 @@ DisconnectCompleted?(no)->NotifiedtheRejectionMessagetoCRM->CRMisNotified
 
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
+                <div class="x_title_custom">
                   <h2>Order Activation - Port In</h2>
-                 
+                  <ul class="nav navbar-right panel_toolbox">
+                   
+		<div class="radio">
+		      <label style="color:#ffffff"><input type="radio" name="optradio" checked onclick="loadSLAChart()" >SLA</label>
+	    	</div>
+	    <div class="radio">
+	      	<label style="color:#ffffff"><input type="radio" name="optradio" onclick="loadOrderInPort()" >Flow</label>
+	    </div>
+                   
+                  </ul>
                   <div class="clearfix"></div>
                 </div>
-                <div class="x_content">
-                 <canvas class="canvasDoughnut"  style=" width: 100%; height: 250px;margin-top:10%;"></canvas>
-                
+                <div class="x_content" id="x_content3">
+                 <!-- <canvas class="canvasDoughnut"  style=" width: 100%; height: 250px;margin-top:10%;"></canvas> -->
+                <script>loadSLAChart()</script>
                       </td>
                     </tr>
                   </tbody></table>
@@ -187,7 +196,7 @@ DisconnectCompleted?(no)->NotifiedtheRejectionMessagetoCRM->CRMisNotified
 
 <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
+                <div class="x_title_custom">
                   <h2>Order Provisioning -  Mobile</h2>
                   
                   <div class="clearfix"></div>
@@ -200,7 +209,7 @@ DisconnectCompleted?(no)->NotifiedtheRejectionMessagetoCRM->CRMisNotified
             </div>
             <div class="col-md-4 col-sm-4 col-xs-12">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
+                <div class="x_title_custom">
                   <h2>Billing Management -  Mobile</h2>
                   
                   <div class="clearfix"></div>
@@ -216,5 +225,72 @@ DisconnectCompleted?(no)->NotifiedtheRejectionMessagetoCRM->CRMisNotified
            </div>
               </div>
         
+ 	<!-- - Start  -->
  	
+ 				<div class="row">
+ <div class="col-md-12 col-sm-12 col-xs-12">
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title_custom">
+                  <h2>Helix Queue</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                  <div  id="chartContainerHelix" style="height: 250px; width: 100%;"></div>
+                    <script>loadHelixQueue()</script> 
+                </div>
+              </div>
+            </div>
+
+
+<div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title_custom">
+                  <h2>TMT Queue</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                <div class="iradio_flat-green checked hover" style="position: relative;">
+                <p>
+                All:
+                        <input type="radio" class="flat" name="MobileTypeTmt" id="allTmt" value="all" checked="" required onclick="showTMTQueue(this.id)" />
+                       Postpaid:
+                        <input type="radio" class="flat" name="MobileTypeTmt" id="postpaidTmt" value="postpaid" required  onclick="showTMTQueue(this.id)" /> Prepaid:
+                        <input type="radio" class="flat" name="MobileTypeTmt" id="prepaidTmt" value="prepaid" onclick="showTMTQueue(this.id)"  />
+                      </p>
+                      </div>
+                  <div  id="chartContainerTMT" style="height: 250px; width: 100%;"></div>
+                    <script>loadTMTQueue()</script> 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="x_title_custom">
+                  <h2>MTS Queue</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                <div class="iradio_flat-green checked hover" style="position: relative;">
+                <p>
+                All:
+                        <input type="radio" class="flat" name="MobileTypeMts" id="allMts" value="all" checked="" required onclick="showMTSQueue(this.id)" />
+                       Postpaid:
+                        <input type="radio" class="flat" name="MobileTypeMts" id="postpaidMts" value="postpaid"  required onclick="showMTSQueue(this.id)"/> Prepaid:
+                        <input type="radio" class="flat" name="MobileTypeMts" id="prepaidMts" value="prepaid" onclick="showMTSQueue(this.id)"/>
+                      </p>
+                      </div>
+                <div  id="chartContainerMTS" style="height: 250px; width: 100%;"></div>
+                <script>loadMTSQueue()</script> 
+                </div>
+              </div>
+            </div>
+
+
+           </div>
+              </div>
  </div>
