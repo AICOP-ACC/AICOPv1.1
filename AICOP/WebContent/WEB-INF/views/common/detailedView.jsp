@@ -111,17 +111,17 @@
       <div class="panel-body">
       <div class="text-primary">Major Incident : 1801040252
       </div>
-		<div id="sampleCheck"></div>
+		
 		 
 		 <i id="confInit" class="fa fa-phone-square icon-green icon-large mouse-point icon-embossed"></i>
-		 <i id="confTerminate" class="fa fa-phone-square icon-red icon-large mouse-point icon-embossed"></i>
-		 <i id="shareBridge" class="fa fa-share-alt-square icon-blue icon-large mouse-point icon-embossed"></i>
+		 <i id="confTerminate" class="fa fa-phone-square icon-red icon-large mouse-point icon-embossed hidden"></i>
+		 <i id="shareBridge" class="fa fa-share-alt-square icon-blue icon-large mouse-point icon-embossed hidden" data-toggle="modal"></i>
 		 
 		 
 		 <!-- <i id="notesIcon" class="fa fa-comment-o icon-blue icon-large icon-embossed mouse-point pull-right"></i> -->
 		 <!-- <button id="popUpNotes" type="button" data-toggle="modal" class="pull-right" data-target=".notes-modal-sm"> -->
 		 <button id="popUpNotes" type="button" data-toggle="modal" class="pull-right" data-target="">
-			 <i id="notesIcon" class="fa fa-comment-o icon-blue icon-large icon-embossed mouse-point pull-right"></i>
+			 <i id="notesIcon" class="fa fa-file-o icon-blue icon-large icon-embossed mouse-point pull-right"></i>
 		 </button>
 		 <div id="popUpModal" class="modal fade notes-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog modal-sm">
@@ -137,9 +137,9 @@
                           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                           <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
                          -->
-                         <!-- <textarea rows="6" cols="200"></textarea>
+                          <textarea rows="6" cols="200"></textarea>
                          <div>&nbsp;</div>
-                         <textarea rows="2" cols="200"></textarea> -->
+                         <textarea rows="2" cols="200"></textarea> 
                          
                          
                          </div>
@@ -151,6 +151,56 @@
                       </div>
                     </div>
                   </div>
+                  
+                  <!-- Pop up for email start -->
+                  <div id="popUpModalEmail" class="modal fade notes-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="emailModalLabeId"></h4>
+                        </div>
+                        <div class="modal-body">
+                          <!-- <h4>Text in a modal</h4>
+                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                         -->
+                          <div class="container">
+							  <!-- <h2></h2> -->
+							  <form action="#">
+							    <div class="form-group">
+							      <label for="toEmail">To:</label>
+							      <input type="email" class="form-control" id="toEmail" placeholder="Enter email" name="toEmail">
+							    </div>
+							    <div class="form-group">
+							      <label for="ccEmail">Cc:</label>
+							      <input type="email" class="form-control" id="ccEmail" placeholder="Enter email" name="ccEmail">
+							    </div>
+							  	<div class="form-group">
+							      <label for="subject">Subject:</label>
+							      <input type="text" class="form-control" id="subject" placeholder="Add a subject" name="subject">
+							    </div>
+							    <div class="form-group">
+							      <textarea id="mailContent" placeholder="Type content here..." class="form-control"></textarea>
+							      
+							    </div>
+							   
+							  </form>
+							</div>
+                         
+                         
+                         </div>
+                        <div class="modal-footer">
+                          
+                           <button id="sendMail" type="button" class="btn btn-default btn-primary">Send</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Pop up for email ends -->
 		 
 		 <table id="memDetTable" class="table table-striped">
 		 	<thead>
@@ -160,7 +210,7 @@
 		 			<th>Designation</th>
 		 			<th>Contact Type</th>
 		 			<th>Number</th>
-		 			<th>Remove</th>
+		 			<!-- <th>Remove</th> -->
 		 		</tr>
 		 	</thead>
 		 		<tbody>
@@ -170,7 +220,7 @@
 		 			<td>Duty Manager</td>
 		 			<td>Primary</td>
 		 			<td id="contactNum">+919790978398</td>
-		 			<td id="removeStakeholder"></td>
+		 			<!--<td id="removeStakeholder"></td>-->
 		 		</tr>
 		 		<tr id="+919600914814_StakeRow"> 
 		 			<td><b>POPI</b></td>
@@ -178,7 +228,7 @@
 		 			<td>Team Lead</td>
 		 			<td>Primary</td>
 		 			<td id="contactNum">+919600914814</td>
-		 			<td id="removeStakeholder"></td>
+		 			<!--<td id="removeStakeholder"></td>-->
 		 		</tr>
 		 		<tr id="+919176635540_StakeRow"> 
 		 			<td><b>MTS</b></td>
@@ -186,7 +236,7 @@
 		 			<td>SME</td>
 		 			<td>Primary</td>
 		 			<td id="contactNum">+919176635540</td>
-		 			<td id="removeStakeholder"></td>
+		 			<!--<td id="removeStakeholder"></td>-->
 		 		</tr>
 		 		<tr id="+919962306163_StakeRow" height="30px"> 
 		 			<td><b>OPOM</b></td>
@@ -194,19 +244,28 @@
 		 			<td>Support Analyst</td>
 		 			<td>Primary</td>
 		 			<td id="contactNum">+919962306163</td>
-		 			<td id="removeStakeholder"></td>
+		 			<!--<td id="removeStakeholder"></td>-->
 		 		</tr>
-		 		<tr id="6596367950_StakeRow" height="30px"> 
+		 		<!-- <tr id="6596367950_StakeRow" height="30px"> 
 		 			<td><b>NA</b></td>
 		 			<td>Guest</td>
 		 			<td>NA</td>
 		 			<td>NA</td>
 		 			<td id="contactNum">+6596367950</td>
 		 			<td id="+6596367950_removeStakeholder"><center><a title="Remove Actions" style="padding: 5px; min-width:60px; height:48px;" id="+6596367950_removeStakeholder" class=""><i class="fa fa-minus-circle" style="font-size: 1.73em;color:red"></i></a></center></td>
-		 		</tr>
+		 		</tr> -->
 		 	</tbody>
 		 </table>
-		 			
+		 <div class="col-md-12">
+		 	<div class="form-group">
+		 		<label class="col-md-2">Add Number </label>
+		 		<div class="col-md-2"><select id="countryCode" class="form-control pull-left"><option>+91</option><option>+65</option><option>+61</option></select></div>
+		 		<div class="col-md-3"><input id="newPhNum" class="form-control pull-left" type="number"/> </div>
+		 		<div class="col-md-1"><i id="addNewNumber" class="fa fa-plus-circle pull-left fa-lg aicop-padding-7 icon-green"></i></div>
+		 		<!-- <div class="col-md-1"><i class="fa fa-plus-circle pull-left"></i></div> -->
+		 	</div>
+		 	<div id="errorMsg" class="form-group icon-red"></div>
+		 </div>			
 	 </div>
     </div>
   </div>
